@@ -56,15 +56,53 @@ print(f'{personita.nombre} {personita.verificarMayor()}')
 
 #Actividad 3 clase 4
 
-def Triangulo():
-    lados = ['','','']
-    menor = None
-    for i in range(len(lados)):
-        while True:
-            lado = input('Ingrese el lado {i+1}')
-            if verificarInputsStrings(lado):
-                lados[i] = int(lado)
-                for j in range(len(lados)):
-                    if menor > lados[i]:
-                        
+class Triangulo():
+    lados=[]
+    mayor=-10000
+    def __init__(self,lado1,lado2,lado3):
+        self.lados.append(lado1)
+        self.lados.append(lado2)
+        self.lados.append(lado3)
+    def evaluarMayorLado(self):
+        for i in range(len(self.lados)):
+            if self.lados[i] > self.mayor:
+                self.mayor = self.lados[i]
+        print(f"El mayor lado es {self.mayor}")
+    def evaluarTipo(self):
+        if self.lados[0] == self.lados [1] == self.lados[2]:
+            print("El triangulo es equilátero")
+        elif self.lados[0] == self.lados[1] or self.lados[0] == self.lados[2] or self.lados[1] == self.lados[2]:
+            print("El triángulo es isóceles")
+        else:
+            print("El triángulo es escaleno")
 
+triangulito = Triangulo(1,2,3)
+triangulito.evaluarMayorLado()
+triangulito.evaluarTipo()
+
+#Actividad 4 clase 4
+class Calculadora():
+    num = []
+    def __init__(self):
+        for i in range(2):
+            while True:
+                num = input(f"Ingrese su {i+1} número")
+                if verificarInputsNumeros(num):
+                    self.num.append(float(num))
+                    break
+                else:
+                    print("Ingrese un numero válido")
+    def calculos(self):
+        suma = self.num[0] + self.num [1]
+        resta = self.num[0] - self.num [1]
+        multi = self.num[0] * self.num [1]
+        print(f'{self.num[0]} + {self.num[1]} = {suma}\n{self.num[0]} - {self.num[1]} = {resta}\n{self.num[0]} * {self.num[1]} = {multi}')
+        try:
+            division = self.num[0] / self.num[1]
+            print(f'{self.num[0]} / {self.num[1]} = {division:.2f}')
+        except ZeroDivisionError:
+            print("No es posible dividir por 0")
+
+
+calcu = Calculadora()
+calcu.calculos()
