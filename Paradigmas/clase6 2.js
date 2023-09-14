@@ -19,7 +19,7 @@ const consulta = r.filter(n => n[0]>55).map(l=>l[1])
 //const diasdeconsulta = consulta.forEach(x => console.log(x[1]))
 const formateo = consulta.forEach(x => console.log(x.toString().substring(0,4)+"-"+x.toString().substring(5,6)+"-"+x.toString().substring(7,8)))
 
-const menor = Math.min(...r[0])
+const menor = Math.min(...r.map(l => l[0]))
 console.log(menor)
 const sumaregistros = r.map(l => l[0]).reduce((a,b)=>a+b,0)
 console.log(sumaregistros)
