@@ -38,19 +38,32 @@ class ListaNoOrdenada:
         actual = self.cabeza
         previo = None
         encontrado = False
-        while not encontrado and actual!=None:
-            if actual.obtenerDato() == item:
-                encontrado = True
+        if self.buscar(item):
+            while not encontrado:
+                if actual.obtenerDato() == item and actual.obtenerDato() != None:
+                    encontrado = True
+                else:
+                    previo = actual
+                    actual = actual.obtenerSiguiente()
+            if previo == None:
+                self.cabeza = actual.obtenerSiguiente()
             else:
-                previo = actual
-                actual = actual.obtenerSiguiente()
-        if previo == None:
-            self.cabeza = actual.obtenerSiguiente()
+                previo.asignarSiguiente(actual.obtenerSiguiente())
         else:
-            previo.asignarSiguiente(actual.obtenerSiguiente())
+            print("Dato no encontrado")
+    def ver(self):
+        print("Cabeza",end = "->")
+        if not self.estaVacia():
+            actual = self.cabeza
+            while actual != None:
+                print(actual.dato, end ="->")
+                actual = actual.obtenerSiguiente()
+        print("None")
 
 milista = ListaNoOrdenada()
+milista.ver()
 milista.agregar(25)
 milista.agregar(31)
 milista.agregar(22)
-milista.remover(299)
+milista.remover(22)
+milista.ver()
