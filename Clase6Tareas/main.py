@@ -38,7 +38,7 @@ class ListaNoOrdenada:
         actual = self.cabeza
         previo = None
         encontrado = False
-        while not encontrado:
+        while not encontrado and actual!=None:
             if actual.obtenerDato() == item:
                 encontrado = True
             else:
@@ -49,8 +49,8 @@ class ListaNoOrdenada:
         else:
             previo.asignarSiguiente(actual.obtenerSiguiente())
 
-"""milista = ListaNoOrdenada()
+milista = ListaNoOrdenada()
 milista.agregar(25)
 milista.agregar(31)
 milista.agregar(22)
-print(milista.buscar(23))"""
+milista.remover(299)
