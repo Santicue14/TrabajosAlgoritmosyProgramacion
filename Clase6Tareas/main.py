@@ -34,6 +34,20 @@ class ListaNoOrdenada:
             else:
                 actual= actual.obtenerSiguiente()
         return encontrado
+    def remover(self,item):
+        actual = self.cabeza
+        previo = None
+        encontrado = False
+        while not encontrado:
+            if actual.obtenerDato() == item:
+                encontrado = True
+            else:
+                previo = actual
+                actual = actual.obtenerSiguiente()
+        if previo == None:
+            self.cabeza = actual.obtenerSiguiente()
+        else:
+            previo.asignarSiguiente(actual.obtenerSiguiente())
 
 """milista = ListaNoOrdenada()
 milista.agregar(25)
